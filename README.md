@@ -32,6 +32,12 @@ To create a production build run:
 And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL. 
 
+## Publishing to Github Pages
+
+lein run -m clojure.main script/publish.clj
+
+View at [http://ericlavigne.github.io/gomoku](http://ericlavigne.github.io/gomoku).
+
 ## License
 
 Copyright © 2016 Eric Lavigne
