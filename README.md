@@ -8,6 +8,12 @@ FIXME: Write a paragraph about the library/project and highlight its goals.
 
 ## Running the program
 
+Even though this program is intended to be run as ClojureScript in the
+browser, much of it is portable Clojure (.cljc) that can be tested
+with Java-based Clojure.
+
+    lein test 
+
 To get an interactive development environment run:
 
     lein figwheel

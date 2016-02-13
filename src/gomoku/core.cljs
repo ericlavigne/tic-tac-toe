@@ -1,5 +1,5 @@
 (ns gomoku.core
-  (:require ))
+  (:require [ai.game :as g]))
 
 (enable-console-print!)
 
@@ -9,6 +9,7 @@
 
 (defonce app-state (atom {:text "Hello world!"}))
 
+(js/alert (g/think))
 
 (defn on-js-reload []
   ;; optionally touch your app-state to force rerendering depending on
