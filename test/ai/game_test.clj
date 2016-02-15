@@ -1,8 +1,11 @@
 (ns ai.game-test
   (:require [clojure.test :refer :all]
-            [ai.game :as g]))
+            [ai.game :as game]
+            [ai.gomoku :as gomoku]
+            [ai.random-player :as player]))
 
-(deftest think-test
-  (testing "The AI can think."
-    (is (= (g/think) "I'm thinking!"))))
-
+(deftest random-player-test
+  (testing "Random player can finish tic-tac-toe without exceptions"
+           (game/determine-winner (gomoku/empty-board 3 3)
+                                  {:black player/play
+                                   :white player/play})))
