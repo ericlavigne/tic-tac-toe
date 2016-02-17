@@ -2,10 +2,6 @@
 
 Gomoku game with computer player
 
-## Overview
-
-FIXME: Write a paragraph about the library/project and highlight its goals.
-
 ## Running the program
 
 Even though this program is intended to be run as ClojureScript in the
@@ -26,10 +22,6 @@ get a Browser Connected REPL. An easy way to try it is:
     (js/alert "Am I connected?")
 
 and you should see an alert in the browser window.
-
-To clean all compiled files:
-
-    lein clean
 
 To create a production build run:
 
