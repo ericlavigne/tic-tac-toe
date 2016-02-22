@@ -10,8 +10,6 @@
                                   {:black player/play
                                    :white player/play})))
 
-
-
 (deftest evaluate-based-on-winning-test
   (let [game-start (gomoku/empty-board 3 3)
         game-in-progress (game/play-moves game-start
