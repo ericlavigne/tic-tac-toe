@@ -1,5 +1,4 @@
-(ns ai.game
-  (:require [clojure.math.combinatorics :as combo]))
+(ns ai.game)
 
 (defn think [] "I'm thinking!")
 
@@ -20,22 +19,17 @@
           (let [move-function ((next-player g) player-to-move-function)]
             (recur (play g (move-function g)))))))))
 
-(defn generate-pairings [positions players]
-  (let [positions-vec (vec positions)
-        player-selections (combo/selections players (count positions-vec))
-        _ (println (str "player-selections: " (vec player-selections)))
-        all-pairings  (map (fn [player-selection]
-                             (zipmap positions-vec player-selection))
-                           player-selections)
-        _ (println (str "all-pairings: " (vec all-pairings)))
-        non-trivial-pairings (remove (fn [pairing]
-                                       (apply = (vals pairing)))
-                                     all-pairings)
-        _ (println (str "non-trivial-pairings: " (vec non-trivial-pairings)))]
-    (set non-trivial-pairings)))
+(defn evaluate-based-on-winning [game perspective]
+  (let [winner (who-won game)]
+    (cond
+      (nil? winner) 0
+      (= winner perspective) 1
+      :else -1)))
 
-;(defn determine-round-winner [game player-name-to-move-function]
-  
-  
-;(defn determine-stronger [game player-name-to-move-function
-;                          & {:keys [rounds threshold] :or {rounds 5 threshold 3}}]
+(defn play-moves [game moves]
+  (if (empty? moves)
+    game
+    (recur (play game (first moves))
+           (rest moves))))
+
+

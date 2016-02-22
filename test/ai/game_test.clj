@@ -10,18 +10,17 @@
                                   {:black player/play
                                    :white player/play})))
 
-(deftest generate-pairings-test
-  (testing "Round with two players and two available positions requires two games"
-           (is (= (game/generate-pairings #{:black :white}
-                                          #{:random :brute})
-                  #{{:black :random :white :brute}
-                    {:black :brute :white :random}})))
-  (testing "Round with three players and two available positions requires six games"
-           (is (= (game/generate-pairings #{:black :white}
-                                          #{:random :brute :mtdf})
-                  #{{:black :random :white :brute}
-                    {:black :random :white :mtdf}
-                    {:black :brute :white :random}
-                    {:black :brute :white :mtdf}
-                    {:black :mtdf :white :random}
-                    {:black :mtdf :white :brute}}))))
+
+
+(deftest evaluate-based-on-winning-test
+  (let [game-start (gomoku/empty-board 3 3)
+        game-in-progress (game/play-moves game-start
+                                          [[0 0] [1 0]
+                                           [0 1] [1 1]])
+        black-wins (game/play game-in-progress [0 2])]
+    (testing "Game still in progress evaluates 0 for everyone"
+             (is (= 0 (game/evaluate-based-on-winning game-start :black)))
+             (is (= 0 (game/evaluate-based-on-winning game-in-progress :white))))
+    (testing "Black wins - eval to 1 for black or -1 for white"
+             (is (= 1 (game/evaluate-based-on-winning black-wins :black)))
+             (is (= -1 (game/evaluate-based-on-winning black-wins :white))))))
