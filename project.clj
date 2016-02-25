@@ -8,7 +8,7 @@
                  [org.clojure/clojurescript "1.7.170"]
                  [org.clojure/core.async "0.2.374"
                   :exclusions [org.clojure/tools.reader]]
-                 [org.clojure/math.combinatorics "0.1.1"]
+                 ;[org.clojure/math.combinatorics "0.1.1"]
                  [clj-jgit "0.8.8"]]
   
   :plugins [[lein-figwheel "0.5.0-6"]
@@ -23,9 +23,9 @@
                 :source-paths ["src"]
 
                 ;; If no code is to be run, set :figwheel true for continued automagical reloading
-                :figwheel {:on-jsload "gomoku.core/on-js-reload"}
+                :figwheel {:on-jsload "ui.main/on-js-reload"}
 
-                :compiler {:main gomoku.core
+                :compiler {:main ui.main
                            :asset-path "js/compiled/out"
                            :output-to "resources/public/js/compiled/gomoku.js"
                            :output-dir "resources/public/js/compiled/out"
@@ -36,7 +36,7 @@
                {:id "min"
                 :source-paths ["src"]
                 :compiler {:output-to "resources/public/js/compiled/gomoku.js"
-                           :main gomoku.core
+                           :main ui.main
                            :optimizations :advanced
                            :pretty-print false}}]}
 

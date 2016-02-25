@@ -1,4 +1,4 @@
-(ns gomoku.core
+(ns ui.main
   (:require [ai.game :as g]))
 
 (enable-console-print!)
