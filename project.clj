@@ -8,6 +8,7 @@
                  [org.clojure/clojurescript "1.7.170"]
                  [org.clojure/core.async "0.2.374"
                   :exclusions [org.clojure/tools.reader]]
+                 [rum "0.6.0"]
                  ;[org.clojure/math.combinatorics "0.1.1"]
                  [clj-jgit "0.8.8"]]
   

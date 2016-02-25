@@ -1,15 +1,18 @@
 (ns ui.main
-  (:require [ai.game :as g]))
+  (:require [ai.game :as g]
+            [rum.core :as rum]))
 
 (enable-console-print!)
-
-(println "Edits to this text should show up in your developer console.")
 
 ;; define your app data so that it doesn't get over-written on reload
 
 (defonce app-state (atom {:text "Hello world!"}))
 
-(js/alert (g/think))
+(rum/defc gomoku-app < rum/static [title]
+  (println "Rendering gomoku-app")
+  [:h1 "Gomoku"])
+
+(rum/mount (gomoku-app) (js/document.getElementById "app"))
 
 (defn on-js-reload []
   ;; optionally touch your app-state to force rerendering depending on
