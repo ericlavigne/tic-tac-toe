@@ -49,6 +49,7 @@
   [stones ; {:black #{[0 0] [1 2]} :white #{[1 1] [2 0]}}
    available ; #{[0 1] [0 2] [0 3] [1 0] [2 1] [2 2]}
    player ; :black
+   board-size ; 3
    required-stones-in-a-row] ; 3
   g/Game
   (players [g] #{:black :white})

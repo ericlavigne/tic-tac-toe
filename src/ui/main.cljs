@@ -22,10 +22,24 @@
                           :last-move-time (now)}))
 
 (rum/defc gomoku-board < rum/reactive [{:keys [game players]}]
+  (let [stones (:stones (rum/react game))]
   [:div
    [:p "A gomoku-board"]
-   [:p (str "Stones: " (:stones (rum/react game)))]
-   [:p (str "Winner: " (g/who-won (rum/react game)))]])
+   [:p (str "Stones: " stones)]
+   [:p (str "Winner: " (g/who-won (rum/react game)))]
+   [:table
+    (map (fn [i]
+           [:tr (map (fn [j]
+                       (let [pos [i j]
+                             stones (:stones @game)
+                             piece (cond
+                                     ((:black stones) pos) "x"
+                                     ((:white stones) pos) "o"
+                                     :else ".")]
+                         [:td piece]))
+                     (range (:board-size @game)))])
+         (range (:board-size @game)))]
+   ]))
 
 (rum/defc gomoku-app < rum/reactive []
   ;(println "Rendering gomoku-app")
