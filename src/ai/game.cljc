@@ -10,6 +10,10 @@
   (available-moves [g] "Returns set of available moves")
   (play [g move] "Returns new game representing result of move"))
 
+(defn finished? [game]
+  (or (who-won game)
+      (empty? (available-moves game))))
+
 (defn determine-winner [game player-to-move-function]
   (loop [g game]
     (let [winner (who-won g)]
