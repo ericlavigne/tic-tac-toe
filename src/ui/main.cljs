@@ -39,6 +39,8 @@
                          [:td piece]))
                      (range (:board-size @game)))])
          (range (:board-size @game)))]
+   [:p "View code on "
+    [:a {:href "http://github.com/ericlavigne/gomoku"} "Github"]]
    ]))
 
 (rum/defc gomoku-app < rum/reactive []

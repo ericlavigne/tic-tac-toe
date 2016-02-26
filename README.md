@@ -2,6 +2,8 @@
 
 Gomoku game with computer player
 
+See in action on [Github Pages](http://ericlavigne.github.io/gomoku).
+
 ## Running the program
 
 Even though this program is intended to be run as ClojureScript in the
