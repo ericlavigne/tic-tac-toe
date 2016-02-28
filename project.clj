@@ -19,6 +19,9 @@
 
   :source-paths ["src"]
 
+  :profiles {:dev {:plugins [[com.jakemccrary/lein-test-refresh "0.14.0"]]}}
+  :test-refresh {:quiet true}
+
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
   :cljsbuild {:builds

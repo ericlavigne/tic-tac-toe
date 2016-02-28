@@ -8,9 +8,10 @@ See in action on [Github Pages](http://ericlavigne.github.io/gomoku).
 
 Even though this program is intended to be run as ClojureScript in the
 browser, much of it is portable Clojure (.cljc) that can be tested
-with Java-based Clojure.
+with Java-based Clojure. The following command automatically re-runs
+the tests each time the code changes.
 
-    lein test 
+    lein test-refresh
 
 To get an interactive development environment run:
 
