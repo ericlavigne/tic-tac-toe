@@ -7,12 +7,12 @@
 
 (deftest basic-competency-test
   (testing "Minimax should never lose to random"
-           (is (not= :white
+           (is (not= :o
                      (game/determine-winner
                        (gomoku/empty-board 3 3)
-                       {:black (fn [game]
-                                 (minimax/play
-                                   game
-                                   game/evaluate-based-on-winning
-                                   6))
-                        :white rand-player/play})))))
+                       {:x (fn [game]
+                             (minimax/play
+                               game
+                               game/evaluate-based-on-winning
+                               6))
+                        :o rand-player/play})))))

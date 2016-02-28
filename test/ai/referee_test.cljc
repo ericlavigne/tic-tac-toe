@@ -6,16 +6,16 @@
 
 (deftest generate-pairings-test
   (testing "Round with two players and two available positions requires two games"
-           (is (= (referee/generate-pairings #{:black :white}
+           (is (= (referee/generate-pairings #{:x :o}
                                              #{:random :brute})
-                  #{{:black :random :white :brute}
-                    {:black :brute :white :random}})))
+                  #{{:x :random  :o :brute}
+                    {:x :brute   :o :random}})))
   (testing "Round with three players and two available positions requires six games"
-           (is (= (referee/generate-pairings #{:black :white}
+           (is (= (referee/generate-pairings #{:x :o}
                                              #{:random :brute :mtdf})
-                  #{{:black :random :white :brute}
-                    {:black :random :white :mtdf}
-                    {:black :brute :white :random}
-                    {:black :brute :white :mtdf}
-                    {:black :mtdf :white :random}
-                    {:black :mtdf :white :brute}}))))
+                  #{{:x :random  :o :brute}
+                    {:x :random  :o :mtdf}
+                    {:x :brute   :o :random}
+                    {:x :brute   :o :mtdf}
+                    {:x :mtdf    :o :random}
+                    {:x :mtdf    :o :brute}}))))

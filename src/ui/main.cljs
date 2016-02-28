@@ -22,19 +22,19 @@
                           :last-move-time (now)}))
 
 (rum/defc gomoku-board < rum/reactive [{:keys [game players]}]
-  (let [stones (:stones (rum/react game))]
+  (let [pieces (:pieces (rum/react game))]
   [:div
    [:p "A gomoku-board"]
-   [:p (str "Stones: " stones)]
+   [:p (str "Pieces: " pieces)]
    [:p (str "Winner: " (g/who-won (rum/react game)))]
    [:table
     (map (fn [i]
            [:tr (map (fn [j]
                        (let [pos [i j]
-                             stones (:stones @game)
+                             pieces (:pieces @game)
                              piece (cond
-                                     ((:black stones) pos) "x"
-                                     ((:white stones) pos) "o"
+                                     ((:x pieces) pos) "x"
+                                     ((:o pieces) pos) "o"
                                      :else ".")]
                          [:td piece]))
                      (range (:board-size @game)))])

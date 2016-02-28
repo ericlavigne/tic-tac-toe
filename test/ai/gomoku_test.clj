@@ -16,8 +16,8 @@
            (loop [game (gomoku/empty-board 3 3)
                   remaining-moves [[1 1] [1 2] [2 2] [0 0] [2 0] [0 2] [2 1]]]
              (if (empty? remaining-moves)
-               (is (= :black (game/who-won game))
-                   "Black should win this game")
+               (is (= :x (game/who-won game))
+                   "X should win this game")
                (do (is (nil? (game/who-won game))
                        "Should be no winner when game still in progress")
                  (recur (game/play game (first remaining-moves))
