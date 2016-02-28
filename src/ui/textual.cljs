@@ -5,26 +5,39 @@
             [rum.core :as rum]
             [ai.random-player :as player]))
 
-(defonce app-state (atom {:game (gomoku/empty-board 3 3)
-                          :last-move-time @clock}))
+(defonce board (atom (gomoku/empty-board 3 3)))
 
-(rum/defc gomoku-board < rum/reactive [{:keys [game players]}]
-  (let [pieces (:pieces (rum/react game))]
-    [:div
-     [:p (str "Pieces: " pieces)]
-     [:p (str "Winner: " (g/who-won (rum/react game)))]
-     ]))
+(defonce last-move-time (atom @clock))
+
+(defn pause-seconds []
+  (if (g/finished? @board)
+    3 1))
+
+(defn time-to-update-board? []
+  (< (pause-seconds)
+     (seconds-passed @last-move-time @clock)))
+
+(defn update-board []
+  (reset! board
+          (if (g/finished? @board)
+            (gomoku/empty-board 3 3)
+            (g/play @board (player/play @board))))
+  (reset! last-move-time @clock))
+
+(defn render-game-result []
+  (when (g/finished? @board)
+    [:p [:b (if-let [winner (g/who-won @board)]
+              (str ({:x "X" :o "O"} winner)
+                   " won!")
+              "Tie Game")]]))
+
+(defn render-board []
+  [:div
+   [:p (str "Pieces: " (:pieces @board))]
+   (render-game-result)])
 
 (rum/defc gomoku-app < rum/reactive []
-  (when (< 1
-           (seconds-passed (:last-move-time @app-state)
-                           (rum/react clock)))
-    (swap! app-state assoc :last-move-time @clock)
-    (let [game (:game @app-state)]
-      (swap! app-state assoc :game
-             (if (g/finished? game)
-               (gomoku/empty-board 3 3)
-               (g/play game
-                       (player/play game))))))
-  [:div
-   (gomoku-board {:game (rum/cursor app-state [:game])})])
+  (rum/react clock)
+  (when (time-to-update-board?)
+    (update-board))
+  (render-board))
