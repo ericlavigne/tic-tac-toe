@@ -4,9 +4,11 @@
 
 (defn generate-pairings [positions players]
   (let [positions-vec (vec positions)
-        player-selections (combo/selections players (count positions-vec))
+        player-selections (combo/selections players
+                                            (count positions-vec))
         all-pairings  (map (fn [player-selection]
-                             (zipmap positions-vec player-selection))
+                             (zipmap positions-vec
+                                     player-selection))
                            player-selections)
         non-trivial-pairings (remove (fn [pairing]
                                        (apply = (vals pairing)))

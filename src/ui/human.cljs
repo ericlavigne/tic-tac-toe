@@ -5,8 +5,10 @@
             [ui.clock :refer [clock seconds-passed]]
             [rum.core :as rum]))
 
-(defonce players (atom {:x {:name "Human" :move-fn :human}
-                        :o {:name "Random" :move-fn random-player/play}}))
+(defonce players (atom {:x {:name "Human"
+                            :move-fn :human}
+                        :o {:name "Random"
+                            :move-fn random-player/play}}))
 
 (defonce board (atom (gomoku/empty-board 3 3)))
 

@@ -26,17 +26,18 @@
   ([gomoku player position]
     (if (not ((get-in gomoku [:pieces player]) position))
       0
-      (apply max
-             (map (fn [dir]
-                    (let [opp (vec-opposite dir)]
-                      (+ 1
-                         (consecutive-pieces gomoku player
-                                             (vec-plus position dir)
-                                             dir)
-                         (consecutive-pieces gomoku player
-                                             (vec-plus position opp)
-                                             opp))))
-                  half-directions))))
+      (apply
+        max
+        (map (fn [dir]
+               (let [opp (vec-opposite dir)]
+                 (+ 1
+                    (consecutive-pieces gomoku player
+                                        (vec-plus position dir)
+                                        dir)
+                    (consecutive-pieces gomoku player
+                                        (vec-plus position opp)
+                                        opp))))
+             half-directions))))
   ([gomoku player position direction]
     (consecutive-pieces gomoku player position direction 0))
   ([gomoku player position direction found-so-far]
@@ -53,10 +54,11 @@
    required-pieces-in-a-row] ; 3
   g/Game
   (players [g] #{:x :o})
-  (who-won [g] (first (filter (fn [player]
-                                (<= required-pieces-in-a-row
-                                    (consecutive-pieces g player)))
-                              (g/players g))))
+  (who-won [g] (first
+                 (filter (fn [player]
+                           (<= required-pieces-in-a-row
+                               (consecutive-pieces g player)))
+                         (g/players g))))
   (next-player [g] player)
   (available-moves [g] available)
   (play [g move]
@@ -73,5 +75,5 @@
                                            (range board-size) 2)))
                 :player :x
                 :board-size board-size
-                :required-pieces-in-a-row required-pieces-in-a-row}))
-
+                :required-pieces-in-a-row
+                required-pieces-in-a-row}))
