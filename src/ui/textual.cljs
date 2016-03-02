@@ -32,12 +32,15 @@
               "Tie Game")]]))
 
 (defn render-board []
+  [:p (str "Pieces: " (:pieces @board))])
+
+(defn render []
   [:div
-   [:p (str "Pieces: " (:pieces @board))]
+   (render-board)
    (render-game-result)])
 
 (rum/defc gomoku-app < rum/reactive []
   (rum/react clock)
   (when (time-to-update-board?)
     (update-board))
-  (render-board))
+  (render))
