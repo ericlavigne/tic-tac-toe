@@ -2,6 +2,7 @@
   (:require [ui.textual :as textual]
             [ui.ascii_art :as ascii]
             [ui.graphic :as graphic]
+            [ui.human :as human]
             [rum.core :as rum]))
 
 (enable-console-print!)
@@ -17,6 +18,8 @@
    (ascii/gomoku-app)
    [:h2 "Graphic"]
    (graphic/gomoku-app)
+   [:h2 "Human"]
+   (human/gomoku-app)
    [:hr]
    [:p "View code on "
     [:a {:href "http://github.com/ericlavigne/gomoku"} "Github"]]])
