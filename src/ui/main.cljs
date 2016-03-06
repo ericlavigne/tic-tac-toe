@@ -25,7 +25,7 @@
    ((:component @selected))
    [:br] [:hr]
    [:p "View code on "
-    [:a {:href "http://github.com/ericlavigne/gomoku"} "Github"]]])
+    [:a {:href "http://github.com/SagaxTech/gomoku"} "Github"]]])
 
 (rum/mount (menu) (js/document.getElementById "app"))
 

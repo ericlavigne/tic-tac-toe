@@ -1,6 +1,6 @@
 (defproject gomoku "0.1.0-SNAPSHOT"
   :description "Gomoku game with computer player"
-  :url "http://github.com/ericlavigne/gomoku"
+  :url "http://github.com/SagaxTech/gomoku"
 
   :min-lein-version "2.5.3"
   

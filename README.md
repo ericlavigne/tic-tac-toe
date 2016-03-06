@@ -2,7 +2,7 @@
 
 Gomoku game with computer player
 
-See in action on [Github Pages](http://ericlavigne.github.io/gomoku).
+See in action on [Github Pages](http://SagaxTech.github.io/gomoku).
 
 ## Running the program
 
@@ -37,9 +37,11 @@ get live reloading, nor a REPL.
 
 lein run -m clojure.main script/publish.clj
 
-View at [http://ericlavigne.github.io/gomoku](http://ericlavigne.github.io/gomoku).
+View at [http://SagaxTech.github.io/gomoku](http://SagaxTech.github.io/gomoku).
 
 ## License
 
-Copyright © 2016 Eric Lavigne
+Copyright © 2016 Sagax Technologies
 
+Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.
