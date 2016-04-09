@@ -1,15 +1,15 @@
 (ns ai.minimax
-  (:require [ai.game :as g]))
+  (:require ai.game))
 
 ; evaluator is fn[game,perspective]->float
 (defn evaluate-with-depth [game evaluator perspective depth]
-  (let [available (g/available-moves game)]
+  (let [available (ai.game/available-moves game)]
     (if (or (<= depth 0) (empty? available))
       (evaluator game perspective)
-      (let [maximizing (= perspective (g/next-player game))
+      (let [maximizing (= perspective (ai.game/next-player game))
             possible-scores (map (fn [move]
                                    (evaluate-with-depth
-                                     (g/play game move)
+                                     (ai.game/play game move)
                                      evaluator perspective
                                      (dec depth)))
                                  available)]
@@ -19,13 +19,13 @@
                possible-scores)))))
   
 (defn play [game evaluator depth]
-  (let [available (g/available-moves game)
-        player (g/next-player game)]
+  (let [available (ai.game/available-moves game)
+        player (ai.game/next-player game)]
     (assert (not-empty available)
             "Can't play if no available moves")
     (apply max-key
            (fn [move] (evaluate-with-depth
-                        (g/play game move)
+                        (ai.game/play game move)
                         evaluator player
                         (dec depth)))
            available)))

@@ -1,5 +1,5 @@
 (ns ui.human
-  (:require [ai.game :as g]
+  (:require [ai.game :as game]
             [ai.gomoku :as gomoku]
             [ai.random-player :as random-player]
             [ui.clock :refer [clock seconds-passed]]
@@ -15,13 +15,13 @@
 (defonce last-move-time (atom @clock))
 
 (defn pause-seconds []
-  (if (g/finished? @board)
+  (if (game/finished? @board)
     3 1))
 
 (defn human-turn? []
   (= :human
      (get-in @players
-             [(g/next-player @board)
+             [(game/next-player @board)
               :move-fn])))
 
 (defn time-to-update-board? []
@@ -31,17 +31,17 @@
 
 (defn update-board []
   (reset! board
-          (if (g/finished? @board)
+          (if (game/finished? @board)
             (gomoku/empty-board 3 3)
-            (g/play @board (random-player/play @board))))
+            (game/play @board (random-player/play @board))))
   (reset! last-move-time @clock))
 
 (defn click-position [position]
   (when (and (human-turn?)
-             ((g/available-moves @board) position))
+             ((game/available-moves @board) position))
     (reset! last-move-time @clock)
     (reset! board
-            (g/play @board position))))
+            (game/play @board position))))
 
 (defn render-square [position]
   (let [pieces (:pieces @board)]
@@ -62,8 +62,8 @@
               [:td (render-square [row col])])])]))
 
 (defn render-game-result []
-  (when (g/finished? @board)
-    [:p [:b (if-let [winner (g/who-won @board)]
+  (when (game/finished? @board)
+    [:p [:b (if-let [winner (game/who-won @board)]
               (str ({:x "X" :o "O"} winner)
                    " won!")
               "Tie Game")]]))

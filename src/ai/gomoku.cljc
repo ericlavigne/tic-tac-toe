@@ -1,5 +1,5 @@
 (ns ai.gomoku
-  (:require [ai.game :as g]
+  (:require [ai.game :as game]
             [clojure.math.combinatorics :as combo]))
 
 (def half-directions
@@ -52,13 +52,13 @@
    player ; :x
    board-size ; 3
    required-pieces-in-a-row] ; 3
-  g/Game
+  game/Game
   (players [g] #{:x :o})
   (who-won [g] (first
                  (filter (fn [player]
                            (<= required-pieces-in-a-row
                                (consecutive-pieces g player)))
-                         (g/players g))))
+                         (game/players g))))
   (next-player [g] player)
   (available-moves [g] available)
   (play [g move]
