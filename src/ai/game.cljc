@@ -1,7 +1,5 @@
 (ns ai.game)
 
-(defn think [] "I'm thinking!")
-
 (defprotocol Game
   "Sequential, turn-based game"
   (players [g] "Set of players in the game")
