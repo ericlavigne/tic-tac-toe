@@ -1,7 +1,14 @@
-(ns ai.minimax
+(ns ai.epsilon-greedy
   (:require ai.game))
 
+(def memory (atom {}))
+
 ; evaluator is fn[game,perspective]->float
+(defn evaluate-move-with-deja-vu [game perspective]
+  (if (ai.game/finished? game)
+    (ai.game/evaluate-based-on-winning game perspective)
+    (get @memory game)))
+  
 (defn evaluate-with-depth [game evaluator perspective depth]
   (let [available (ai.game/available-moves game)]
     (if (or (<= depth 0) (empty? available))
@@ -30,10 +37,10 @@
                         (dec depth)))
            available)))
 
-(defn player [evaluator depth]
-  (fn [game]
-    (play
-      game
-      evaluator
-      depth)))
-  
+(defn play [game previous-move])
+
+(defn player []
+  (let [previous-move (atom nil)]
+    (fn [game]
+      (reset! previous-move
+        (play game previous-move)))))

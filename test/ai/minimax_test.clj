@@ -10,9 +10,5 @@
            (is (not= :o
                      (game/determine-winner
                        (gomoku/empty-board 3 3)
-                       {:x (fn [game]
-                             (minimax/play
-                               game
-                               game/evaluate-based-on-winning
-                               6))
+                       {:x (minimax/player game/evaluate-based-on-winning 6)
                         :o rand-player/play})))))
