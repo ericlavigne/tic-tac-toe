@@ -1,8 +1,22 @@
-# Gomoku
+# Presentation about clear, domain-focused programming at Clojure Ireland
 
-Gomoku game with computer player
+The value of Clojure is that it allows your application’s domain to be expressed simply,
+clearly, and directly. Clojure, when used well, fades into the background to let your
+application’s domain shine through.
 
-See in action on [Github Pages](http://SagaxTech.github.io/gomoku).
+We’ll explore the domain of tic-tac-toe, and its Japanese variation gomoku. Along the way,
+we’ll see how to structure a real Clojure application. We’ll also pause on occasion to
+show how the features of Clojure allow it to fade so elegantly into the background.
+
+You’ll have an opportunity to play the game and take the code home.
+
+[Presentation announcement at Clojure Ireland](https://www.meetup.com/Clojure-Ireland/events/228029411/)
+
+## Playing the game online
+
+Tic-Tac-Toe game with computer player
+
+See in action on [Github Pages](http://ericlavigne.github.io/tic-tac-toe/).
 
 ## Running the program
 
@@ -31,17 +45,17 @@ To create a production build run:
     lein do clean, cljsbuild once min
 
 And open your browser in `resources/public/index.html`. You will not
-get live reloading, nor a REPL. 
+get live reloading, nor a REPL.
 
 ## Publishing to Github Pages
 
 lein run -m clojure.main script/publish.clj
 
-View at [http://SagaxTech.github.io/gomoku](http://SagaxTech.github.io/gomoku).
+View on [Github Pages](http://ericlavigne.github.io/tic-tac-toe/).
 
 ## License
 
-Copyright © 2016 Sagax Technologies
+Copyright © 2016 Eric Lavigne
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.

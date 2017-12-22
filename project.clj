@@ -1,9 +1,9 @@
-(defproject gomoku "0.1.0-SNAPSHOT"
-  :description "Gomoku game with computer player"
-  :url "http://github.com/SagaxTech/gomoku"
+(defproject tic-tac-toe "1.0.0"
+  :description "Tic-tac-toe game with computer player"
+  :url "http://ericlavigne.github.io/tic-tac-toe/"
 
   :min-lein-version "2.5.3"
-  
+
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.170"]
                  [org.clojure/core.async "0.2.374"
@@ -13,7 +13,7 @@
                  ; repo supports Clojurescript.
                  ; [org.clojure/math.combinatorics "0.1.1"]
                  [clj-jgit "0.8.8"]]
-  
+
   :plugins [[lein-figwheel "0.5.0-6"]
             [lein-cljsbuild "1.1.2" :exclusions [[org.clojure/clojure]]]]
 
