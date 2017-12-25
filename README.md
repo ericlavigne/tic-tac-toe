@@ -1,4 +1,4 @@
-# Presentation about clear, domain-focused programming at Clojure Ireland
+# Presentation about clear, domain-focused programming
 
 The value of Clojure is that it allows your application’s domain to be expressed simply,
 clearly, and directly. Clojure, when used well, fades into the background to let your
